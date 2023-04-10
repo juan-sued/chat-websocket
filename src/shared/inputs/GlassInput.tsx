@@ -10,7 +10,7 @@ export const GlassInput: React.FC = () => {
           type="text"
           name="text"
           className="input__search"
-          placeholder="Qual seu nome?"
+          placeholder="Qual seu nome, Meu Nobre?"
         />
       </div>
     </GlassInputStyle>
@@ -34,7 +34,7 @@ const GlassInputStyle = styled.div`
     justify-content: center;
     align-items: center;
     gap: 5px;
-    border-radius: 22px;
+    border-radius: 10px;
     width: 400px;
     transition: transform 400ms;
     transform-style: preserve-3d;
@@ -42,14 +42,15 @@ const GlassInputStyle = styled.div`
     perspective: 500px;
 
     position: relative;
-    animation: levitar 5s infinite ease-in-out;
+    animation: levitar 10s normal ease-in-out;
 
     @keyframes levitar {
       0% {
-        transform: translateY(0);
+        transform: translateY(-150px) rotateY(-360deg) rotateX(360deg);
       }
+
       50% {
-        transform: translateY(-10px) rotateY(-360deg) rotateX(360deg);
+        transform: translateY(5px);
       }
       100% {
         transform: translateY(0);
@@ -70,7 +71,7 @@ const GlassInputStyle = styled.div`
     bottom: 0;
     z-index: -1;
     filter: blur(30px);
-    border-radius: 20px;
+    border-radius: 8px;
     background-color: #999cff;
     background-image: radial-gradient(
         at 85% 51%,
@@ -103,7 +104,7 @@ const GlassInputStyle = styled.div`
 
   .input__search {
     width: 100%;
-    border-radius: 20px;
+    border-radius: 10px;
     outline: none;
     border: none;
     padding: 8px;
