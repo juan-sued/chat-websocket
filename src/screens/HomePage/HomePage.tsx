@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { ICheckboxButtonRoom, IRoom } from '../../interfaces/IChat';
-import { GlassInput } from '../../shared/inputs/GlassInput';
-import ButtonArrow from '../../shared/buttons/ButtonArrow';
 
 import lovepik_cell from '../../assets/lovepik_cell.png';
 import FormEnterRoom from '../../shared/forms/FormEnterRoom/FormEnterRoom';
+import { IRoom } from '../../interfaces/IChat';
 export function HomePage(): React.ReactElement {
   const rooms: IRoom[] = [
     { id: 2, name: 'Sala da Sarinha' },

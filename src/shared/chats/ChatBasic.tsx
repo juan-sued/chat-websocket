@@ -106,7 +106,6 @@ const ChatBasicStyle = styled.div`
   position: fixed;
   bottom: 20px;
   right: 20px;
-  font-family: 'Rubik', sans-serif;
   font-weight: 500;
   .OpenChat {
     height: 41px;

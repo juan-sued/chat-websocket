@@ -104,8 +104,7 @@ const ChatBasicGiantStyle = styled.div`
   width: 100%;
   height: 100%;
 
-  font-family: 'Rubik', sans-serif;
-  font-weight: 500;
+  font-weight: 100;
   display: flex;
 
   place-content: center;
@@ -141,6 +140,7 @@ const ChatBasicGiantStyle = styled.div`
       rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
       rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
     width: 600px;
+    height: auto;
   }
 
   .chat-header {
@@ -152,9 +152,8 @@ const ChatBasicGiantStyle = styled.div`
     border-top-right-radius: 5px;
     cursor: pointer;
   }
-
   .chat-window {
-    height: 80vh;
+    height: 76vh;
     overflow-y: scroll;
   }
 
@@ -173,15 +172,15 @@ const ChatBasicGiantStyle = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: end;
-        align-items: center;
+        align-items: start;
         margin-bottom: 10px;
         border-radius: 4px;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
           rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
           rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-        min-width: 20px;
+        min-width: 40px;
         padding: 10px;
-        min-height: 30px;
+        min-height: 40px;
 
         .message {
           word-wrap: break-word;
@@ -212,7 +211,6 @@ const ChatBasicGiantStyle = styled.div`
       .messageContainer {
         width: auto;
         height: 100%;
-
         align-items: end;
 
         .triangle {
@@ -269,5 +267,13 @@ const ChatBasicGiantStyle = styled.div`
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
       rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
       rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+  }
+
+  @media (max-width: 420px) {
+    .chat-window {
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    }
   }
 `;

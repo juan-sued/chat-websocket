@@ -67,22 +67,7 @@ const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
 }
 
-body,
-html {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  overflow-x: hidden;
-  width: 100%;
-  height: 100%;
-  font-family: 'Rubik', sans-serif;
 
-  background-color: #4158D0;
-  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
-  z-index: -100;
-
-  
-}
 
 #root {
   max-width: 1280px;
@@ -97,7 +82,7 @@ html {
 
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
   line-height: 1.5;
   font-weight: 400;
 
@@ -133,25 +118,51 @@ h1 {
 
 
 ::-webkit-scrollbar {
-  width: 7px;
-  scrollbar-width: 10px;
+  width: 5px;
+  scrollbar-width: 2px;
   background-color: transparent;
           /* width of the entire scrollbar */
 }
 
 ::-webkit-scrollbar-track {
 
-  background: green;
+
   border-radius: 100px;      
   background-color: transparent;  /* color of the tracking area */
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: red;    /* color of the scroll thumb */
+  background-color: blueviolet;    /* color of the scroll thumb */
   border-radius: 20px;   
      /* roundness of the scroll thumb */
   /* creates padding around scroll thumb */
 }
+
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  font-family: 'Comfortaa', cursive;
+
+  background-color: #4158D0;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+  z-index: -100;
+
+  
+}
+
+input, button{
+  font-family: 'Comfortaa', cursive;
+
+}
+
+
+
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -165,7 +176,6 @@ h1 {
     background-color: #ffffff;
   }
 }
-font-family: 'Rubik', sans-serif;
 
 
 

@@ -1,23 +1,40 @@
 import styled from 'styled-components';
 
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { IRoom } from '../../../interfaces/IChat';
-import { GlassInput } from '../../inputs/GlassInput';
+import GlassInput from '../../inputs/GlassInput';
 import CheckboxFormEnterRoom from './CheckboxFormEnterRoom';
+import { useNavigate } from 'react-router-dom';
 
 interface IFormEnterRoom {
   rooms: IRoom[];
 }
 
-export default function FormEnterRoom({ rooms }: IFormEnterRoom) {
-  const [selectedId, setSelectedId] = useState<number>(0);
+export interface IEnterRoomData {
+  nameRoom: string;
+  userName: string;
+}
 
+export default function FormEnterRoom({ rooms }: IFormEnterRoom) {
+  const navigate = useNavigate();
+  const [enterRoomData, setEnterRoomData] = useState<IEnterRoomData>({
+    nameRoom: '',
+    userName: ''
+  });
+
+  function submitFormEnterRoom(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    navigate('/chat');
+  }
   return (
-    <FormEnterRoomStyle>
-      <GlassInput />
+    <FormEnterRoomStyle onSubmit={submitFormEnterRoom}>
+      <GlassInput
+        setEnterRoomData={setEnterRoomData}
+        enterRoomData={enterRoomData}
+      />
       <CheckboxFormEnterRoom
-        selectedId={selectedId}
-        setSelectedId={setSelectedId}
+        enterRoomData={enterRoomData}
+        setEnterRoomData={setEnterRoomData}
         rooms={rooms}
       />
     </FormEnterRoomStyle>

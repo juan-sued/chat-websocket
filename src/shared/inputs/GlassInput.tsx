@@ -1,6 +1,19 @@
+import { ChangeEvent, Dispatch, SetStateAction } from 'react';
 import styled from 'styled-components';
+import { IEnterRoomData } from '../forms/FormEnterRoom/FormEnterRoom';
 
-export const GlassInput: React.FC = () => {
+interface IGlassInput {
+  setEnterRoomData: Dispatch<SetStateAction<IEnterRoomData>>;
+  enterRoomData: IEnterRoomData;
+}
+export default function GlassInput({
+  setEnterRoomData,
+  enterRoomData
+}: IGlassInput): React.ReactElement {
+  const handleChangeText = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setEnterRoomData({ ...enterRoomData, [name]: value });
+  };
   return (
     <GlassInputStyle>
       <div className="input__container">
@@ -8,14 +21,16 @@ export const GlassInput: React.FC = () => {
 
         <input
           type="text"
-          name="text"
+          name="userName"
           className="input__search"
           placeholder="Qual seu nome, Meu Nobre?"
+          value={enterRoomData.userName}
+          onChange={handleChangeText}
         />
       </div>
     </GlassInputStyle>
   );
-};
+}
 
 const GlassInputStyle = styled.div`
   width: 100%;

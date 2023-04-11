@@ -2,17 +2,19 @@ import styled from 'styled-components';
 import { IRoom } from '../../../interfaces/IChat';
 import ButtonArrow from '../../buttons/ButtonArrow';
 import { CheckboxButtonRoom } from '../../buttons/CheckboxButtonRoom';
+import { IEnterRoomData } from './FormEnterRoom';
+import { Dispatch, SetStateAction, useState } from 'react';
 
 interface ICheckboxFormEnterRoom {
   rooms: IRoom[];
-  setSelectedId: (id: number) => void;
-  selectedId: number;
+  setEnterRoomData: Dispatch<SetStateAction<IEnterRoomData>>;
+  enterRoomData: IEnterRoomData;
 }
 
 export default function CheckboxFormEnterRoom({
   rooms,
-  setSelectedId,
-  selectedId
+  setEnterRoomData,
+  enterRoomData
 }: ICheckboxFormEnterRoom) {
   return (
     <CheckboxFormEnterRoomStyle>
@@ -24,8 +26,8 @@ export default function CheckboxFormEnterRoom({
                 key={index}
                 id={room.id}
                 name={room.name}
-                setSelectedId={setSelectedId}
-                selectedId={selectedId}
+                setEnterRoomData={setEnterRoomData}
+                enterRoomData={enterRoomData}
               />
             ))
           : ''}

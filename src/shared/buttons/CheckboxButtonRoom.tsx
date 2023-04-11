@@ -1,19 +1,29 @@
+import { Dispatch, SetStateAction } from 'react';
 import styled from 'styled-components';
-import { ICheckboxButtonRoom } from '../../interfaces/IChat';
+import { IEnterRoomData } from '../forms/FormEnterRoom/FormEnterRoom';
+
+interface ICheckboxButtonRoom {
+  id: number;
+  name: string;
+  setEnterRoomData: Dispatch<SetStateAction<IEnterRoomData>>;
+  enterRoomData: IEnterRoomData;
+}
 
 export const CheckboxButtonRoom: React.FC<ICheckboxButtonRoom> = ({
   id,
   name,
-  setSelectedId,
-  selectedId
+  setEnterRoomData,
+  enterRoomData
 }: ICheckboxButtonRoom) => {
-  const handleCheckboxChange = (id: number) => {
-    setSelectedId(id);
+  const handleCheckboxChange = (value: string) => {
+    setEnterRoomData({ ...enterRoomData, nameRoom: value });
   };
+
+  const isSelected: boolean = enterRoomData.nameRoom === name ? true : false;
   return (
     <CheckboxButtonRoomStyle
-      backgroundChecked={selectedId === id ? true : false}
-      onClick={() => handleCheckboxChange(id)}
+      backgroundChecked={isSelected}
+      onClick={() => handleCheckboxChange(name)}
       type="button"
     >
       <div className="checkbox-wrapper-5">
@@ -21,8 +31,8 @@ export const CheckboxButtonRoom: React.FC<ICheckboxButtonRoom> = ({
           <input
             id="check-5"
             type="checkbox"
-            checked={selectedId === id ? true : false}
-            onChange={() => handleCheckboxChange(id)}
+            checked={isSelected}
+            onChange={() => handleCheckboxChange(name)}
           />
           <label htmlFor="check-5"></label>
         </div>

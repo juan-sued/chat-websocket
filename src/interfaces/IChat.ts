@@ -10,11 +10,4 @@ interface IRoom {
   name: string;
 }
 
-interface ICheckboxButtonRoom {
-  id: number;
-  name: string;
-  setSelectedId: (id: number) => void;
-  selectedId: number;
-}
-
-export { IMessage, IRoom, ICheckboxButtonRoom };
+export { IMessage, IRoom };
