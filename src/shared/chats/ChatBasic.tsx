@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { socket } from '../../socket';
-import { IMessage } from '../../interfaces/IChat';
+import { IMessage } from '../messages/MessageDefault';
 
 export const ChatBasic: React.FC = () => {
   const [toggle, setToggle] = useState(true);
