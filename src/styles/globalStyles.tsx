@@ -159,10 +159,13 @@ html {
 input, button{
   font-family: 'Comfortaa', cursive;
 
+
 }
 
 
-
+input:focus {
+  outline: none;
+}
 
 @media (prefers-color-scheme: light) {
   :root {

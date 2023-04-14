@@ -12,5 +12,5 @@ export default function ChatPage() {
 const ChatPageStyle = styled.div`
   width: 100%;
   height: 100%;
-  padding: 50px;
+  background-color: orange;
 `;
