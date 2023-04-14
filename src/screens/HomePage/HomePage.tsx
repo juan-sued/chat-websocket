@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import lovepik_cell from '../../assets/lovepik_cell.png';
 import FormEnterRoom from '../../shared/forms/FormEnterRoom/FormEnterRoom';
 import { IRoom } from '../../interfaces/IChat';
+
 export function HomePage(): React.ReactElement {
   const rooms: IRoom[] = [
     { id: 2, name: 'Sala da Sarinha' },

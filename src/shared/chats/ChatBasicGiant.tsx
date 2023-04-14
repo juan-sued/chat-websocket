@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { socket } from '../../socket';
 import MessageDefault, { IMessage } from '../messages/MessageDefault';
+import SessionContext from '../../contexts/sessionContext';
 
 export const ChatBasicGiant: React.FC = () => {
   const messageEndRef = useRef<HTMLUListElement>(null);
@@ -22,19 +23,23 @@ export const ChatBasicGiant: React.FC = () => {
     };
   }, []);
 
+  const { session } = useContext(SessionContext);
+
   useEffect(() => {
     if (messageEndRef.current) {
-      messageEndRef.current.scrollIntoView({
-        behavior: 'auto',
-        block: 'end'
-      });
+      messageEndRef.current.scrollIntoView({ block: 'end' });
     }
   }, [messages]);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    socket.emit('message', { message: inputValue, idConnection: socket.id });
+    socket.emit('message', {
+      message: inputValue,
+      idConnection: socket.id,
+      userName: session.userName,
+      nameRoom: session.nameRoom
+    });
     setInputValue('');
   }
 
@@ -45,15 +50,16 @@ export const ChatBasicGiant: React.FC = () => {
   return (
     <ChatBasicGiantStyle>
       <form className="card" onSubmit={handleSubmit}>
-        <div className="chat-header">Chat</div>
+        <div className="chat-header">{session.nameRoom}</div>
         <ul className="message-list" ref={messageEndRef}>
           {messages
             ? messages.map((message, index) => (
                 <MessageDefault
                   key={index}
                   idConnection={message.idConnection}
-                  user={message.user}
+                  userName={message.userName}
                   message={message.message}
+                  nameRoom={message.nameRoom}
                   idConnectionUserCurrent={idConnectionUserCurrent}
                 />
               ))

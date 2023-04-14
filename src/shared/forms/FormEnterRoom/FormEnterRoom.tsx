@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, useContext, useState } from 'react';
 import { IRoom } from '../../../interfaces/IChat';
 import GlassInput from '../../inputs/GlassInput';
 import CheckboxFormEnterRoom from './CheckboxFormEnterRoom';
 import { useNavigate } from 'react-router-dom';
-
+import SessionContext from '../../../contexts/sessionContext';
 interface IFormEnterRoom {
   rooms: IRoom[];
 }
@@ -16,7 +16,10 @@ export interface IEnterRoomData {
 }
 
 export default function FormEnterRoom({ rooms }: IFormEnterRoom) {
+  const { setSession } = useContext(SessionContext);
+
   const navigate = useNavigate();
+
   const [enterRoomData, setEnterRoomData] = useState<IEnterRoomData>({
     nameRoom: '',
     userName: ''
@@ -24,6 +27,7 @@ export default function FormEnterRoom({ rooms }: IFormEnterRoom) {
 
   function submitFormEnterRoom(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setSession(enterRoomData);
     navigate('/chat');
   }
   return (

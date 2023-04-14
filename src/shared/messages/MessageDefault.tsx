@@ -2,32 +2,35 @@ import styled from 'styled-components';
 
 export interface IMessage {
   idConnection: string;
-  user: string;
+  userName: string;
   message: string;
   idConnectionUserCurrent: string;
+  nameRoom: string;
 }
 
 export default function MessageDefault({
   message,
   idConnection,
-  user,
-  idConnectionUserCurrent
+  userName,
+  idConnectionUserCurrent,
+  nameRoom
 }: IMessage) {
   const type = idConnectionUserCurrent === idConnection ? 'sended' : 'received';
 
   return (
     <MessageDefaultStyle>
-      <li className={'container ' + type}>
+      <div className={'container ' + type}>
         <div className="messageContainer ">
+          <div className="nameUser">{userName}</div>
           <div className="message">{message}</div>
           <div className="triangle"></div>
         </div>
-      </li>
+      </div>
     </MessageDefaultStyle>
   );
 }
 
-const MessageDefaultStyle = styled.div`
+const MessageDefaultStyle = styled.li`
   width: 100%;
   .container {
     width: 100%;
@@ -48,6 +51,12 @@ const MessageDefaultStyle = styled.div`
       padding: 10px;
       min-height: 40px;
 
+      .nameUser {
+        font-size: 10px;
+        width: 100%;
+        margin-bottom: 8px;
+        color: white;
+      }
       .message {
         word-wrap: break-word;
         white-space: normal;
@@ -85,7 +94,9 @@ const MessageDefaultStyle = styled.div`
         left: 20px;
       }
     }
-
+    .nameUser {
+      display: none;
+    }
     justify-content: end;
   }
 

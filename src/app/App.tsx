@@ -1,20 +1,23 @@
 import styled from 'styled-components';
-import { ChatBasicGiant } from '../shared/chats/ChatBasicGiant';
 
 import { BrowserRouter } from 'react-router-dom';
 import Routes from '../Routes';
 import GlobalStyles from '../styles/globalStyles';
 
-function App(): React.ReactElement {
+import { SessionProvider } from '../contexts/sessionContext';
+
+const App: React.FC = () => {
   return (
     <>
       <GlobalStyles />
       <BrowserRouter>
-        <Routes />
+        <SessionProvider>
+          <Routes />
+        </SessionProvider>
       </BrowserRouter>
     </>
   );
-}
+};
 
 export default App;
 
